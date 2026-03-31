@@ -1727,6 +1727,437 @@ a { color: inherit; text-decoration: none; }
 
 
 /* ═══════════════════════════════════════════════════════════
+   VOLUNTEER GUILD SECTION
+   ═══════════════════════════════════════════════════════════ */
+.volunteer-section {
+  padding: clamp(var(--space-12), 8vw, var(--space-32)) 0;
+  border-top: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(15, 13, 10, 0) 0%, rgba(45, 90, 39, 0.04) 50%, rgba(15, 13, 10, 0) 100%);
+}
+
+/* Guild Intro */
+.guild-intro {
+  max-width: 800px;
+  margin: 0 auto var(--space-12);
+}
+
+.guild-intro-text p {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.guild-intro-text strong {
+  color: var(--color-text);
+}
+
+.guild-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: rgba(212, 160, 23, 0.06);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-4);
+}
+
+.guild-highlight svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.guild-highlight span {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Credit Tiers */
+.credit-tiers {
+  margin-bottom: var(--space-12);
+}
+
+.credit-tiers-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: #e8621a;
+  margin-bottom: var(--space-6);
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+.tier-card {
+  background: rgba(26, 24, 20, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.tier-card:hover {
+  border-color: var(--color-border);
+  transform: translateY(-2px);
+}
+
+.tier-card--featured {
+  border-color: #d4a017;
+  background: rgba(212, 160, 23, 0.06);
+}
+
+.tier-card--featured:hover {
+  border-color: #d4a017;
+}
+
+.tier-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d4a017;
+  color: #0f0d0a;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px var(--space-4);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.tier-icon {
+  margin: var(--space-4) auto var(--space-3);
+}
+
+.tier-name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.tier-hours {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: #d4a017;
+  margin-bottom: var(--space-5);
+}
+
+.tier-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tier-perks li {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-2) 0;
+  border-top: 1px solid rgba(154, 148, 136, 0.1);
+  line-height: 1.4;
+}
+
+.tier-perks li:first-child {
+  border-top: none;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Scheduled Maintenance Tasks */
+.maintenance-tasks {
+  margin-bottom: var(--space-12);
+}
+
+.tasks-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: #d4a017;
+  margin-bottom: var(--space-3);
+}
+
+.tasks-desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.task-card {
+  background: rgba(26, 24, 20, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: border-color 0.3s ease;
+}
+
+.task-card:hover {
+  border-color: rgba(212, 160, 23, 0.3);
+}
+
+.task-emoji {
+  flex-shrink: 0;
+}
+
+.task-name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.task-desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.task-meta {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: auto;
+}
+
+.task-frequency, .task-zone {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.task-frequency {
+  color: #d4a017;
+  background: rgba(212, 160, 23, 0.1);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.task-zone {
+  color: #9a9488;
+  background: rgba(154, 148, 136, 0.08);
+  border: 1px solid rgba(154, 148, 136, 0.15);
+}
+
+/* Registration Form */
+.registration-form-wrapper {
+  max-width: 740px;
+  margin: 0 auto;
+  background: rgba(26, 24, 20, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+}
+
+.reg-form-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.reg-form-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
+}
+
+.reg-form-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.guild-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-group label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-optional {
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(15, 13, 10, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  transition: border-color 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d4a017;
+  box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.1);
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239a9488' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: var(--space-10);
+}
+
+.form-group select option {
+  background: #1a1814;
+  color: var(--color-text);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Checkbox grid */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-3);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.checkbox-label:hover {
+  color: var(--color-text);
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(15, 13, 10, 0.5);
+  position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+  background: #d4a017;
+  border-color: #d4a017;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: solid #0f0d0a;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Form actions */
+.form-actions {
+  text-align: center;
+  padding-top: var(--space-4);
+}
+
+.form-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  background: #e8621a;
+  color: #0f0d0a;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background: #d4a017;
+  transform: translateY(-1px);
+}
+
+.form-submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
    RESPONSIVE — MOBILE
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
@@ -1837,6 +2268,27 @@ a { color: inherit; text-decoration: none; }
     border-top: 1px solid var(--color-border);
   }
 
+  /* Volunteer Guild */
+  .tiers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .registration-form-wrapper {
+    padding: var(--space-6);
+  }
+
   /* Footer */
   .footer-nav {
     grid-template-columns: 1fr;
@@ -1886,6 +2338,23 @@ a { color: inherit; text-decoration: none; }
 
   .payment-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Volunteer Guild */
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-form-wrapper {
+    padding: var(--space-4);
+  }
+
+  .tier-card {
+    padding: var(--space-5);
+  }
+
+  .task-card {
+    padding: var(--space-4);
   }
 }
 

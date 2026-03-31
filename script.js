@@ -513,3 +513,73 @@
 
   stats.forEach(stat => obs.observe(stat));
 })();
+
+
+/* ── Volunteer Guild Form Handler ────────────────────────── */
+(function initGuildForm() {
+  const form = document.getElementById('guild-form');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const btn = form.querySelector('.form-submit-btn');
+    const originalHTML = btn.innerHTML;
+
+    // Gather form data
+    const data = new FormData(form);
+    const payload = {
+      name: data.get('name'),
+      email: data.get('email'),
+      phone: data.get('phone') || '',
+      zip: data.get('zip'),
+      tier: data.get('tier'),
+      tasks: data.getAll('tasks'),
+      availability: data.get('availability') || ''
+    };
+
+    // Loading state
+    btn.disabled = true;
+    btn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="spin-icon">
+        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+      </svg>
+      Registering...
+    `;
+
+    // Add spin animation
+    const style = document.createElement('style');
+    style.id = 'guild-spin';
+    style.textContent = `
+      @keyframes guild-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      .spin-icon { animation: guild-spin 1s linear infinite; }
+    `;
+    if (!document.getElementById('guild-spin')) document.head.appendChild(style);
+
+    // Simulate registration (no real backend)
+    setTimeout(function () {
+      // Success state
+      form.innerHTML = `
+        <div style="text-align:center; padding: var(--space-8) var(--space-4);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6daa45" stroke-width="2" style="margin:0 auto var(--space-4);display:block;" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+          <h3 style="font-family:var(--font-display); font-size:var(--text-xl); color:var(--color-text); margin:0 0 var(--space-3);">Welcome to the Dragon's Guild!</h3>
+          <p style="font-size:var(--text-sm); color:var(--color-text-muted); line-height:1.7; max-width:480px; margin:0 auto;">
+            <strong style="color:#d4a017;">${payload.name}</strong>, you're registered as a
+            <strong style="color:#e8621a;">${{
+              ember: 'Ember Keeper',
+              scale: 'Scale Smith',
+              knight: 'Dragon Knight'
+            }[payload.tier] || 'Guild Member'}</strong>.
+            A confirmation email has been sent to <strong style="color:var(--color-text);">${payload.email}</strong> with your volunteer schedule and parking credit tracker.
+          </p>
+          <p style="font-size:var(--text-xs); color:var(--color-text-faint); margin-top:var(--space-4);">
+            Note: This is a concept demonstration. In the live system, registration data would be securely stored and you'd receive a real confirmation.
+          </p>
+        </div>
+      `;
+    }, 1800);
+  });
+})();
